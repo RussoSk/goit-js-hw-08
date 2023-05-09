@@ -20,7 +20,7 @@ const saveFormLocalStorage = throttle(() => {
 form.addEventListener('input', saveFormLocalStorage);
 
 //  відновлення даних форми з локального сховища
-const restoreFormFromLocalStorage = () => {
+const restoreFormFromLocalStorage = () => { 
   const savedState = localStorage.getItem(FB_LOKALSTORAGE_KAY);
   if (savedState) {
     const formState = JSON.parse(savedState);
@@ -46,8 +46,8 @@ function sabmitClear (event) {
     return;
   }
   const formData = {
-    email: emailInput.value,
-    message: messageInput.value,
+    email,
+    message
   };
   console.log(formData);
   form.reset();
