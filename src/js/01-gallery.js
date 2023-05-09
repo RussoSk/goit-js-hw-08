@@ -3,16 +3,11 @@ import SimpleLightbox from "simplelightbox";
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { galleryItems } from './gallery-items';
 // Change code below this line
-const cardMarkup = createCardMarkup(galleryItems);
+
 const galleryList = document.querySelector('.gallery');
+const cardMarkup = createCardMarkup(galleryItems);
 
 galleryList.insertAdjacentHTML('beforeend', cardMarkup);
-
-const lightbox = new SimpleLightbox('.gallery a', {
-  cartionsType: "attr",
-  captionsData: 'alt',
-  captionDelay: 250,
-});
 
 function createCardMarkup(cards) {
   return cards.map(({ preview, original, description }) => {
@@ -23,5 +18,11 @@ function createCardMarkup(cards) {
             </div>`;
   }).join('');
 }
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  cartionsType: "attr",
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 console.log(galleryItems);

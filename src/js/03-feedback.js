@@ -33,19 +33,24 @@ const restoreFormFromLocalStorage = () => {
 restoreFormFromLocalStorage();
 
 
-
 // сабміт, очищення
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
+form.addEventListener('submit', sabmitClear);
 
-  const formState = {
+function sabmitClear (event) {
+  event.preventDefault();
+  const email = event.currentTarget.elements.email.value;
+  const message = event.currentTarget.elements.message.value;
+
+  if (email === '' || message === '') {
+    alert('Всі поля повинні бути заповнені!');
+    return;
+  }
+  const formData = {
     email: emailInput.value,
     message: messageInput.value,
   };
-  console.log(formState);
-  
-//   emailInput.value = '';
-//   messageInput.value = '';
+  console.log(formData);
   form.reset();
   localStorage.removeItem(FB_LOKALSTORAGE_KAY);
-});
+}
+
